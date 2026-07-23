@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reserve your units | ASB Gear</title>
+  <meta name="description" content="Reserve your ASB Gear launch allocation. No payment is taken at this stage." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="" />
+        <span class="brand-name">ASB <span>Gear</span></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="index.html#products">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <p class="crumbs"><a href="cart.html">Cart</a> &rsaquo; Reserve</p>
+    </div>
+
+    <section class="section" style="padding-top:1rem">
+      <div class="wrap">
+        <h1>Reserve your units</h1>
+
+        <div class="notice" style="margin-bottom:2rem">
+          <strong>This is a reservation, not a purchase.</strong> No card details are requested
+          anywhere on this page and no money changes hands today. You're holding launch allocation
+          at the introductory price. When production lands we'll email you a payment link to
+          confirm — and you're free to walk away at that point with nothing owed.
+        </div>
+
+        <div class="cart-layout">
+          <!-- ---------------- form ---------------- -->
+          <form data-reservation-form novalidate>
+
+            <div class="step-head">
+              <span class="step-num">1</span>
+              <h2>Contact</h2>
+            </div>
+
+            <div class="field">
+              <label for="name">Full name <span class="req">*</span></label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email <span class="req">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="phone">Phone <span style="color:hsl(var(--muted));font-weight:400">(optional)</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="step-head">
+              <span class="step-num">2</span>
+              <h2>Ship to</h2>
+            </div>
+
+            <div class="field">
+              <label for="address1">Address <span class="req">*</span></label>
+              <input id="address1" name="address1" type="text" autocomplete="address-line1" required />
+            </div>
+
+            <div class="field">
+              <label for="address2">Apartment, suite, etc. <span style="color:hsl(var(--muted));font-weight:400">(optional)</span></label>
+              <input id="address2" name="address2" type="text" autocomplete="address-line2" />
+            </div>
+
+            <div class="field-row-3">
+              <div class="field">
+                <label for="city">City <span class="req">*</span></label>
+                <input id="city" name="city" type="text" autocomplete="address-level2" required />
+              </div>
+              <div class="field">
+                <label for="region">State / Province <span class="req">*</span></label>
+                <input id="region" name="region" type="text" autocomplete="address-level1" required />
+              </div>
+              <div class="field">
+                <label for="postal">ZIP / Postal <span class="req">*</span></label>
+                <input id="postal" name="postal" type="text" autocomplete="postal-code" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="country">Country <span class="req">*</span></label>
+              <select id="country" name="country" autocomplete="country-name" required>
+                <option value="">Choose…</option>
+                <option>United States</option>
+                <option>Canada</option>
+                <option data-disabled>Other — not shipping at launch</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="notes">Notes for us <span style="color:hsl(var(--muted));font-weight:400">(optional)</span></label>
+              <textarea id="notes" name="notes" rows="3" placeholder="Anything we should know — bulk quantities, timing, questions."></textarea>
+            </div>
+
+            <!-- ------------ payment: intentionally inert ------------ -->
+            <div class="step-head step-disabled">
+              <span class="step-num">3</span>
+              <h2>Payment</h2>
+            </div>
+
+            <div class="payment-placeholder">
+              <strong>Payment isn't live yet</strong>
+              <p>
+                We're not collecting card details until our processor is set up — a checkout that
+                takes card numbers it can't charge is a security problem, not a convenience. You'll
+                get a secure payment link by email when production is confirmed.
+              </p>
+            </div>
+
+            <button class="btn btn-primary btn-lg" type="submit" style="width:100%;margin-top:1.75rem">
+              Reserve my units
+            </button>
+
+            <p class="note-line">
+              Submitting opens a pre-filled email to our sales team with your reservation. By
+              sending it you agree to our <a href="terms.html">Terms</a> and
+              <a href="privacy.html">Privacy Policy</a>. We use your details only to fulfil this
+              reservation — no marketing lists, no third parties.
+            </p>
+          </form>
+
+          <!-- ---------------- summary ---------------- -->
+          <aside class="summary">
+            <h2>Your reservation</h2>
+            <ul class="spec-list" data-checkout-summary></ul>
+            <p class="note-line" style="margin-top:1.25rem">
+              Shipping and sales tax are calculated when your order is confirmed at launch, not now.
+            </p>
+            <a class="btn btn-ghost" href="cart.html" style="width:100%;margin-top:0.75rem">Edit cart</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-bar" style="margin-top:0;border-top:0;padding-top:0">
+        <span>&copy; <span data-year>2026</span> ASB Solutions Group Inc.</span>
+        <span>
+          <a href="terms.html">Terms</a> ·
+          <a href="privacy.html">Privacy</a> ·
+          <a href="returns.html">Returns</a> ·
+          <a href="shipping.html">Shipping</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/cart.js"></script>
+</body>
+</html>

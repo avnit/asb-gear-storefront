@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your cart | ASB Gear</title>
+  <meta name="description" content="Review the ASB Gear items you've selected and reserve your launch allocation." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="" />
+        <span class="brand-name">ASB <span>Gear</span></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="index.html#products">Products</a>
+        <a href="products/nexus-9-usb-c-dock.html">Nexus 9</a>
+        <a href="products/drivelink-15-car-mount.html">DriveLink 15</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap">
+        <h1>Your cart</h1>
+
+        <!-- ---------------- empty ---------------- -->
+        <div class="empty-state" data-cart-empty hidden>
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
+          </svg>
+          <h2 style="font-size:1.2rem">Nothing here yet</h2>
+          <p class="lead" style="margin-inline:auto">Both products are open for launch reservations.</p>
+          <div class="hero-actions" style="justify-content:center">
+            <a class="btn btn-primary" href="index.html#products">Browse the line-up</a>
+          </div>
+        </div>
+
+        <!-- ---------------- filled ---------------- -->
+        <div class="cart-layout" data-cart-filled hidden>
+          <div>
+            <p class="lead" style="margin-bottom:0"><span data-count>0 items</span> reserved</p>
+            <div data-cart-lines></div>
+          </div>
+
+          <aside class="summary">
+            <h2>Summary</h2>
+            <ul class="spec-list">
+              <li><span class="k">Subtotal</span><span class="v" data-subtotal>$0.00</span></li>
+              <li><span class="k">Shipping</span><span class="v">Quoted at launch</span></li>
+              <li><span class="k">Tax</span><span class="v">Calculated at launch</span></li>
+            </ul>
+
+            <a class="btn btn-primary btn-lg" href="checkout.html">Reserve these units</a>
+
+            <div class="notice" style="margin-top:1.25rem">
+              <strong>No payment is taken.</strong> Reserving holds your allocation and the
+              introductory price. You'll be invoiced only when you confirm at launch.
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="index.html" style="margin-bottom:.9rem">
+            <img src="assets/img/logo.png" alt="" />
+            <span class="brand-name">ASB <span>Gear</span></span>
+          </a>
+          <p>Connectivity and charging hardware, built to a standard rather than to a price. A
+            product line of ASB Solutions Group Inc.</p>
+        </div>
+        <div>
+          <h4>Products</h4>
+          <ul>
+            <li><a href="products/nexus-9-usb-c-dock.html">Nexus 9 Dock</a></li>
+            <li><a href="products/drivelink-15-car-mount.html">DriveLink 15 Mount</a></li>
+            <li><a href="index.html#products">Compare</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html#interest">Launch list</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Policies</h4>
+          <ul>
+            <li><a href="shipping.html">Shipping</a></li>
+            <li><a href="returns.html">Returns &amp; warranty</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>&copy; <span data-year>2026</span> ASB Solutions Group Inc. All rights reserved.</span>
+        <span>Pre-launch site — pricing and specifications subject to change.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/cart.js"></script>
+</body>
+</html>

@@ -353,6 +353,129 @@ img, svg { max-width: 100%; height: auto; display: block; }
 }
 .notice strong { color: hsl(var(--primary)); }
 
+/* ---------- cart link in nav ---------- */
+.cart-link {
+  position: relative; display: inline-flex; align-items: center;
+  color: hsl(var(--foreground)); padding: 0.35rem;
+}
+.cart-link:hover { color: hsl(var(--primary)); }
+.cart-badge {
+  position: absolute; top: -4px; right: -7px;
+  min-width: 17px; height: 17px; padding: 0 4px;
+  border-radius: 999px;
+  background: hsl(var(--primary)); color: hsl(var(--primary-foreground));
+  font-size: 0.68rem; font-weight: 700; line-height: 17px; text-align: center;
+}
+@media (max-width: 760px) {
+  .cart-link { padding: 0.7rem 0; border-bottom: 1px solid hsl(var(--border)); }
+  .cart-badge { position: static; display: inline-block; margin-left: 0.5rem; }
+}
+
+/* ---------- cart page ---------- */
+.cart-layout { display: grid; grid-template-columns: 1.65fr 1fr; gap: 2.5rem; align-items: start; }
+@media (max-width: 900px) { .cart-layout { grid-template-columns: 1fr; } }
+
+.line {
+  display: grid;
+  grid-template-columns: 96px 1fr auto auto auto;
+  gap: 1.1rem; align-items: center;
+  padding: 1.1rem 0; border-bottom: 1px solid hsl(var(--border));
+}
+.line-img {
+  border-radius: var(--radius); background: hsl(var(--primary) / 0.08);
+  padding: 0.4rem; border: 1px solid hsl(var(--border));
+}
+.line-main { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.line-main a { color: hsl(var(--foreground)); font-size: 1.02rem; }
+.line-main a:hover { color: hsl(var(--primary)); text-decoration: none; }
+.line-sku { font-size: 0.75rem; letter-spacing: 0.05em; color: hsl(var(--muted)); text-transform: uppercase; }
+.line-unit { font-size: 0.85rem; color: hsl(var(--muted)); }
+.line-total { font-weight: 600; min-width: 5rem; text-align: right; }
+.line-remove {
+  background: none; border: 0; cursor: pointer; padding: 0.3rem;
+  color: hsl(var(--muted)); font-size: 0.83rem; text-decoration: underline;
+}
+.line-remove:hover { color: hsl(var(--foreground)); }
+
+.qty { display: inline-flex; align-items: center; border: 1px solid hsl(var(--border)); border-radius: var(--radius); overflow: hidden; }
+.qty button {
+  width: 32px; height: 34px; border: 0; cursor: pointer; font-size: 1.05rem;
+  background: hsl(var(--background)); color: hsl(var(--foreground));
+}
+.qty button:hover { background: hsl(var(--primary) / 0.12); color: hsl(var(--primary)); }
+.qty span { min-width: 34px; text-align: center; font-weight: 600; font-size: 0.95rem; }
+
+@media (max-width: 620px) {
+  .line { grid-template-columns: 72px 1fr auto; grid-template-areas: "img main total" "img qty remove"; row-gap: 0.6rem; }
+  .line-img { grid-area: img; width: 72px; }
+  .line-main { grid-area: main; }
+  .line-total { grid-area: total; }
+  .qty { grid-area: qty; }
+  .line-remove { grid-area: remove; justify-self: end; }
+}
+
+.summary {
+  border: 1px solid hsl(var(--border)); border-radius: calc(var(--radius) * 1.4);
+  background: hsl(var(--card)); padding: 1.5rem; position: sticky; top: 90px;
+}
+@media (max-width: 900px) { .summary { position: static; } }
+.summary h2 { font-size: 1.15rem; }
+.summary .spec-list li.sum { border-top: 1px solid hsl(var(--border)); border-bottom: 0; margin-top: 0.35rem; padding-top: 0.85rem; font-size: 1rem; }
+.summary .btn { width: 100%; margin-top: 1.25rem; }
+
+.empty-state { text-align: center; padding: 4rem 1rem; }
+.empty-state svg { margin: 0 auto 1.25rem; color: hsl(var(--muted)); }
+
+/* ---------- checkout form ---------- */
+.field { margin-bottom: 1.1rem; }
+.field label { display: block; font-size: 0.88rem; font-weight: 500; margin-bottom: 0.35rem; }
+.field .req { color: hsl(var(--primary)); }
+.field input, .field textarea, .field select {
+  width: 100%; padding: 0.65rem 0.8rem;
+  font: inherit; font-size: 0.95rem;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border)); border-radius: var(--radius);
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: 2px solid hsl(var(--ring)); outline-offset: 1px; border-color: transparent;
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field-row-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; }
+@media (max-width: 560px) { .field-row, .field-row-3 { grid-template-columns: 1fr; } }
+
+.step-head { display: flex; align-items: center; gap: 0.7rem; margin: 2rem 0 1.1rem; }
+.step-head:first-child { margin-top: 0; }
+.step-num {
+  width: 27px; height: 27px; flex: 0 0 27px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 0.83rem; font-weight: 700;
+  background: hsl(var(--primary)); color: hsl(var(--primary-foreground));
+}
+.step-head h2 { margin: 0; font-size: 1.15rem; }
+.step-disabled .step-num { background: hsl(var(--muted) / 0.35); color: hsl(var(--muted)); }
+
+.payment-placeholder {
+  border: 1px dashed hsl(var(--border)); border-radius: var(--radius);
+  padding: 1.5rem; text-align: center; color: hsl(var(--muted));
+  background: hsl(var(--background));
+}
+.payment-placeholder strong { color: hsl(var(--foreground)); display: block; margin-bottom: 0.35rem; }
+.payment-placeholder p { font-size: 0.9rem; margin: 0; }
+
+.note-line { font-size: 0.88rem; color: hsl(var(--muted)); margin-top: 1rem; }
+
+/* ---------- legal / prose pages ---------- */
+.prose { max-width: 74ch; }
+.prose h2 { font-size: 1.3rem; margin-top: 2.5rem; }
+.prose h3 { font-size: 1.05rem; margin-top: 1.75rem; }
+.prose ul, .prose ol { padding-left: 1.25rem; }
+.prose li { margin-bottom: 0.5rem; }
+.prose table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.92rem; }
+.prose th, .prose td { text-align: left; padding: 0.65rem 0.75rem; border-bottom: 1px solid hsl(var(--border)); }
+.prose th { font-weight: 600; background: hsl(var(--primary) / 0.06); }
+.prose .updated { font-size: 0.85rem; color: hsl(var(--muted)); }
+.table-scroll { overflow-x: auto; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   .card:hover, .btn:hover { transform: none; }
