@@ -8,7 +8,7 @@ Two products are in the catalogue:
 | Product | SKU | Intro price | Page |
 | :--- | :--- | :--- | :--- |
 | Nexus 9 — 9-in-1 USB-C docking station | `ASB-NX9-001` | $89 (reg. $109) | [`products/nexus-9-usb-c-dock.html`](products/nexus-9-usb-c-dock.html) |
-| DriveLink 15 — Qi2 magnetic car charger mount | `ASB-DL15-001` | $49 (reg. $59) | [`products/drivelink-15-car-mount.html`](products/drivelink-15-car-mount.html) |
+| DriveLink 15 — 15W magnetic car charger mount | `ASB-DL15-001` | $49 (reg. $59) | [`products/drivelink-15-car-mount.html`](products/drivelink-15-car-mount.html) |
 
 ## Stack
 
@@ -120,8 +120,15 @@ The logo and favicon are the corporate ASB marks.
   box contents were written to be internally consistent and plausible for this
   product class. They are **not** confirmed against a supplier quote or a real
   bill of materials — verify every figure against the actual sourced units before
-  this page is public, particularly the Qi2 certification claim, the 100 W PD
-  figures, and the magnet holding force.
+  this page is public, particularly the 100 W PD figures, the sustained 15 W
+  charging claim, and the magnet holding force.
+
+  **Certification marks:** this site deliberately makes **no** Qi2, Qi, or
+  MagSafe claim. Those are third-party certification marks (Wireless Power
+  Consortium and Apple respectively) and may not be used on an uncertified
+  product. The DriveLink is described as a "15W magnetic wireless charger"
+  throughout. Do not reintroduce those terms unless certification is actually
+  obtained — see `asb-gear-ops/amazon/00-compliance-matrix.md`.
 - **Legal pages are drafts, not advice.** Terms, privacy, returns, and shipping
   now exist and are internally consistent with how the site actually behaves, but
   they have not been reviewed by counsel and each carries a visible draft banner.

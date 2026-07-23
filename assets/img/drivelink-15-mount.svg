@@ -74,6 +74,6 @@
   <circle cx="200" cy="140" r="3" fill="#22c55e"/>
 
   <g font-family="Inter, system-ui, sans-serif">
-    <text x="200" y="248" text-anchor="middle" font-size="13" font-weight="600" fill="#64748b">Qi2 15W · N52 magnets · vent + dash</text>
+    <text x="200" y="248" text-anchor="middle" font-size="13" font-weight="600" fill="#64748b">15W magnetic · N52 magnets · vent + dash</text>
   </g>
 </svg>
