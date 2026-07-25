@@ -227,6 +227,39 @@ img, svg { max-width: 100%; height: auto; display: block; }
   padding: 0.2rem 0.6rem; border-radius: 999px;
 }
 
+/* ---------- catalog: status pill on media ---------- */
+.card-media { position: relative; }
+.card-media svg { color: hsl(var(--primary)); }
+.pill {
+  position: absolute; top: 0.75rem; right: 0.75rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 0.28rem 0.6rem; border-radius: 999px;
+}
+.pill-live { background: hsl(var(--success) / 0.16); color: hsl(var(--success)); border: 1px solid hsl(var(--success) / 0.35); }
+.pill-soon { background: hsl(var(--muted) / 0.14); color: hsl(var(--muted)); border: 1px solid hsl(var(--muted) / 0.3); }
+
+.card-title-link { color: inherit; }
+.card-title-link:hover { text-decoration: none; color: hsl(var(--primary)); }
+.card[data-status="coming-soon"] .card-media { background: linear-gradient(150deg, hsl(var(--muted) / 0.1), hsl(var(--muted) / 0.03)); }
+
+/* ---------- catalog: filter chips ---------- */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 2rem; }
+.chip {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font: inherit; font-size: 0.88rem; font-weight: 500;
+  padding: 0.45rem 0.9rem; border-radius: 999px; cursor: pointer;
+  background: hsl(var(--card)); color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.chip:hover { border-color: hsl(var(--primary) / 0.5); }
+.chip.active { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); border-color: transparent; }
+.chip-n {
+  font-size: 0.72rem; font-weight: 700; padding: 0.05rem 0.4rem; border-radius: 999px;
+  background: hsl(var(--foreground) / 0.08); color: inherit;
+}
+.chip.active .chip-n { background: hsl(0 0% 100% / 0.22); }
+
 /* ---------- feature list ---------- */
 .feature-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;

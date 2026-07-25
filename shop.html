@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your cart | ASB Gear</title>
-  <meta name="description" content="Review the ASB Gear items you've selected and reserve your launch allocation." />
-  <meta name="robots" content="noindex" />
+  <title>Shop all products | ASB Gear</title>
+  <meta name="description" content="The full ASB Gear catalog — connectivity, charging, audio, workspace, and travel accessories. Two products are shipping first; the rest are on the roadmap." />
   <link rel="icon" href="assets/img/favicon.png" type="image/png" />
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
@@ -26,6 +25,7 @@
         <a href="products/nexus-9-usb-c-dock.html">Nexus 9</a>
         <a href="products/drivelink-15-car-mount.html">DriveLink 15</a>
         <a href="about.html">About</a>
+        <a class="btn btn-primary" href="index.html#interest" data-interest="ASB Gear catalog">Notify me</a>
       </nav>
     </div>
   </header>
@@ -33,43 +33,47 @@
   <main id="main">
     <section class="section">
       <div class="wrap">
-        <h1>Your cart</h1>
-
-        <!-- ---------------- empty ---------------- -->
-        <div class="empty-state" data-cart-empty hidden>
-          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
-          </svg>
-          <h2 style="font-size:1.2rem">Nothing here yet</h2>
-          <p class="lead" style="margin-inline:auto">Both products are open for launch reservations.</p>
-          <div class="hero-actions" style="justify-content:center">
-            <a class="btn btn-primary" href="shop.html">Browse the catalog</a>
-          </div>
+        <div class="section-head" style="max-width:70ch">
+          <span class="eyebrow">The catalog</span>
+          <h1>Everything ASB Gear makes — and plans to.</h1>
+          <p class="lead">
+            Connectivity, charging, audio, workspace, and travel accessories, held to one standard.
+            The badge on each product tells you where it is: <strong>Reserve now</strong> means it's
+            a launch product with real supplier work in motion; <strong>Coming soon</strong> means
+            it's on the roadmap — a concept we intend to build, not yet sourced or priced against a
+            factory quote.
+          </p>
         </div>
 
-        <!-- ---------------- filled ---------------- -->
-        <div class="cart-layout" data-cart-filled hidden>
-          <div>
-            <p class="lead" style="margin-bottom:0"><span data-count>0 items</span> reserved</p>
-            <div data-cart-lines></div>
+        <div class="notice" style="margin-bottom:2rem">
+          <strong>Two products are launching first</strong> — the Nexus 9 dock and the DriveLink 15
+          car mount. Everything marked "Coming soon" is roadmap: the pricing is indicative and it
+          isn't orderable yet. Tap <em>Notify me</em> on anything you'd want, and it helps us decide
+          what to build next.
+        </div>
+
+        <!-- category filter, populated by shop.js -->
+        <div class="filter-bar" data-filter-bar role="group" aria-label="Filter by category"></div>
+
+        <!-- catalog grid, populated by shop.js -->
+        <div class="product-grid" data-catalog-grid></div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="wrap">
+        <div class="cta-panel">
+          <span class="eyebrow">One standard, whatever the product</span>
+          <h2>The roadmap grows the same way the first two did</h2>
+          <p class="lead">
+            Nothing joins the shipping catalog until we can stand behind every number on its page —
+            no borrowed certifications, no "compatible with" sleight of hand. That's why most of
+            this list still says "Coming soon".
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="index.html#interest" data-interest="ASB Gear catalog">Join the launch list</a>
+            <a class="btn btn-ghost btn-lg" href="about.html">How we decide what to make</a>
           </div>
-
-          <aside class="summary">
-            <h2>Summary</h2>
-            <ul class="spec-list">
-              <li><span class="k">Subtotal</span><span class="v" data-subtotal>$0.00</span></li>
-              <li><span class="k">Shipping</span><span class="v">Quoted at launch</span></li>
-              <li><span class="k">Tax</span><span class="v">Calculated at launch</span></li>
-            </ul>
-
-            <a class="btn btn-primary btn-lg" href="checkout.html">Reserve these units</a>
-
-            <div class="notice" style="margin-top:1.25rem">
-              <strong>No payment is taken.</strong> Reserving holds your allocation and the
-              introductory price. You'll be invoiced only when you confirm at launch.
-            </div>
-          </aside>
         </div>
       </div>
     </section>
@@ -87,11 +91,11 @@
             product line of ASB Solutions Group Inc.</p>
         </div>
         <div>
-          <h4>Products</h4>
+          <h4>Shop</h4>
           <ul>
+            <li><a href="shop.html">All products</a></li>
             <li><a href="products/nexus-9-usb-c-dock.html">Nexus 9 Dock</a></li>
             <li><a href="products/drivelink-15-car-mount.html">DriveLink 15 Mount</a></li>
-            <li><a href="shop.html">All products</a></li>
           </ul>
         </div>
         <div>
@@ -119,7 +123,9 @@
     </div>
   </footer>
 
-  <script src="assets/js/site.js"></script>
+  <script src="assets/js/catalog-data.js"></script>
   <script src="assets/js/cart.js"></script>
+  <script src="assets/js/shop.js"></script>
+  <script src="assets/js/site.js"></script>
 </body>
 </html>

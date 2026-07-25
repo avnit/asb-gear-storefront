@@ -30,26 +30,29 @@
   var SALES_EMAIL = "sales@asbsolutionsgroup.com";
 
   // Prices are in whole USD cents to avoid floating-point drift.
-  var CATALOG = {
-    "ASB-NX9-001": {
-      sku: "ASB-NX9-001",
-      name: "Nexus 9 USB-C Docking Station",
-      short: "Nexus 9",
-      price: 8900,
-      was: 10900,
-      img: "assets/img/nexus-9-dock.svg",
-      url: "products/nexus-9-usb-c-dock.html"
-    },
-    "ASB-DL15-001": {
-      sku: "ASB-DL15-001",
-      name: "DriveLink 15 Magnetic Car Charger Mount",
-      short: "DriveLink 15",
-      price: 4900,
-      was: 5900,
-      img: "assets/img/drivelink-15-mount.svg",
-      url: "products/drivelink-15-car-mount.html"
-    }
+  //
+  // The ORDERABLE catalog is derived from window.ASBGEAR_CATALOG (catalog-data.js)
+  // and contains ONLY status:"launch" items — the two real SKUs. Everything else
+  // in the catalog is a "coming-soon" concept that cannot be added to a cart, so
+  // it deliberately never lands here. If catalog-data.js hasn't loaded (e.g. a
+  // page that doesn't include it), we fall back to the two launch SKUs inline so
+  // the cart still works. This keeps launch prices in ONE place: catalog-data.js.
+  var FALLBACK = {
+    "ASB-NX9-001": { sku: "ASB-NX9-001", name: "Nexus 9 USB-C Docking Station", short: "Nexus 9", price: 8900, was: 10900, img: "assets/img/nexus-9-dock.svg", url: "products/nexus-9-usb-c-dock.html" },
+    "ASB-DL15-001": { sku: "ASB-DL15-001", name: "DriveLink 15 Magnetic Car Charger Mount", short: "DriveLink 15", price: 4900, was: 5900, img: "assets/img/drivelink-15-mount.svg", url: "products/drivelink-15-car-mount.html" }
   };
+
+  var CATALOG = (function () {
+    var src = window.ASBGEAR_CATALOG;
+    if (!src || !src.length) return FALLBACK;
+    var out = {};
+    src.forEach(function (p) {
+      if (p.status === "launch") {
+        out[p.sku] = { sku: p.sku, name: p.name, short: p.short, price: p.price, was: p.was, img: p.img, url: p.url };
+      }
+    });
+    return Object.keys(out).length ? out : FALLBACK;
+  })();
 
   // Pages under /products/ need to climb one level for shared assets.
   var BASE = /\/products\//.test(location.pathname) ? "../" : "";
@@ -124,28 +127,32 @@
   }
 
   // ---------------------------------------------------------------- add to cart
+  // Delegated on document so it works for cards rendered dynamically by shop.js
+  // (the catalog grid re-renders on every category filter). No per-element
+  // binding, so re-rendering never leaves dead buttons or double-fires.
   function wireAddButtons() {
-    Array.prototype.forEach.call(document.querySelectorAll("[data-add-sku]"), function (btn) {
-      btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        var sku = btn.getAttribute("data-add-sku");
-        if (!CATALOG[sku]) return;
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-add-sku]");
+      if (!btn) return;
+      e.preventDefault();
 
-        var cart = readCart();
-        cart[sku] = Math.min((cart[sku] || 0) + 1, 99);
-        writeCart(cart);
+      var sku = btn.getAttribute("data-add-sku");
+      if (!CATALOG[sku]) return; // not an orderable launch SKU — ignore
 
-        // Deliberately not disabled: clicking twice should add two units, not
-        // swallow the second click behind a confirmation animation.
-        var original = btn.getAttribute("data-label") || btn.textContent;
-        btn.setAttribute("data-label", original);
-        btn.textContent = "Added ✓ (" + cart[sku] + ")";
+      var cart = readCart();
+      cart[sku] = Math.min((cart[sku] || 0) + 1, 99);
+      writeCart(cart);
 
-        clearTimeout(btn._resetTimer);
-        btn._resetTimer = setTimeout(function () {
-          btn.textContent = original;
-        }, 1600);
-      });
+      // Deliberately not disabled: clicking twice should add two units, not
+      // swallow the second click behind a confirmation animation.
+      var original = btn.getAttribute("data-label") || btn.textContent;
+      btn.setAttribute("data-label", original);
+      btn.textContent = "Added ✓ (" + cart[sku] + ")";
+
+      clearTimeout(btn._resetTimer);
+      btn._resetTimer = setTimeout(function () {
+        btn.textContent = original;
+      }, 1600);
     });
   }
 

@@ -72,7 +72,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
       <nav class="nav" id="nav">
-        <a href="index.html#products">Products</a>
+        <a href="shop.html">Shop</a>
         <a href="products/nexus-9-usb-c-dock.html">Nexus 9</a>
         <a href="products/drivelink-15-car-mount.html">DriveLink 15</a>
         <a href="about.html">About</a>
@@ -88,14 +88,14 @@
       <div class="wrap hero-grid">
         <div>
           <span class="eyebrow">A product line of ASB Solutions Group Inc.</span>
-          <h1>Two products. Both engineered properly.</h1>
+          <h1>Desk and car gear, engineered properly.</h1>
           <p class="lead">
-            Most desk and car accessories are built to a price, then marketed as if they weren't.
-            We picked two problems worth solving well — the cluttered laptop desk and the phone
-            sliding around your dashboard — and shipped exactly two products.
+            Most connectivity and charging accessories are built to a price, then marketed as if
+            they weren't. We're building a catalog that isn't — starting with two products shipping
+            first, and a roadmap of the rest we'd want on our own desks.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary btn-lg" href="#products">See the line-up</a>
+            <a class="btn btn-primary btn-lg" href="shop.html">Shop the catalog</a>
             <a class="btn btn-ghost btn-lg" href="#interest">Join the launch list</a>
           </div>
           <div class="hero-stats">
@@ -114,69 +114,16 @@
     <section class="section" id="products">
       <div class="wrap">
         <div class="section-head">
-          <h2>The line-up</h2>
-          <p class="lead">Small catalogue, deliberate choices. Every port and every magnet on these
-            two products earned its place.</p>
+          <h2>Shipping first</h2>
+          <p class="lead">Two products are launching ahead of the rest — the ones we've taken all
+            the way through sourcing and compliance. Below them, a preview of what's on the roadmap.</p>
         </div>
 
-        <div class="product-grid">
+        <!-- launch pair + a couple of roadmap items, rendered from catalog-data.js -->
+        <div class="product-grid" data-featured-grid></div>
 
-          <article class="card">
-            <div class="card-media">
-              <img src="assets/img/nexus-9-dock.svg" alt="Nexus 9 USB-C docking station" width="300" height="195" />
-            </div>
-            <div class="card-body">
-              <h3>Nexus 9</h3>
-              <p class="sku">USB-C Docking Station · ASB-NX9-001</p>
-              <div class="tag-row">
-                <span class="tag">9 ports</span>
-                <span class="tag">Dual 4K</span>
-                <span class="tag">100W PD</span>
-                <span class="tag">Gigabit LAN</span>
-              </div>
-              <p>
-                One cable to your laptop, nine connections on the other side. Milled aluminium shell
-                that sinks heat instead of trapping it, and a 30&nbsp;cm braided cable that doesn't
-                fight the desk edge.
-              </p>
-              <div class="card-foot">
-                <span class="price">$89<small>$109</small></span>
-                <span style="display:flex;gap:.5rem">
-                  <a class="btn btn-ghost" href="products/nexus-9-usb-c-dock.html">Details</a>
-                  <button class="btn btn-primary" type="button" data-add-sku="ASB-NX9-001">Add to cart</button>
-                </span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-media">
-              <img src="assets/img/drivelink-15-mount.svg" alt="DriveLink 15 magnetic car charger mount" width="300" height="195" />
-            </div>
-            <div class="card-body">
-              <h3>DriveLink 15</h3>
-              <p class="sku">Magnetic Car Charger Mount · ASB-DL15-001</p>
-              <div class="tag-row">
-                <span class="tag">15W magnetic</span>
-                <span class="tag">N52 magnets</span>
-                <span class="tag">Vent + dash</span>
-                <span class="tag">Active cooling</span>
-              </div>
-              <p>
-                A magnet array strong enough for a cased phone on a bad road, a ball joint that holds
-                the angle you set it to, and a fan-assisted coil that keeps charging in a hot car
-                instead of throttling to nothing.
-              </p>
-              <div class="card-foot">
-                <span class="price">$49<small>$59</small></span>
-                <span style="display:flex;gap:.5rem">
-                  <a class="btn btn-ghost" href="products/drivelink-15-car-mount.html">Details</a>
-                  <button class="btn btn-primary" type="button" data-add-sku="ASB-DL15-001">Add to cart</button>
-                </span>
-              </div>
-            </div>
-          </article>
-
+        <div style="text-align:center;margin-top:2.5rem">
+          <a class="btn btn-primary btn-lg" href="shop.html">Browse all products</a>
         </div>
       </div>
     </section>
@@ -304,7 +251,7 @@
           <ul>
             <li><a href="products/nexus-9-usb-c-dock.html">Nexus 9 Dock</a></li>
             <li><a href="products/drivelink-15-car-mount.html">DriveLink 15 Mount</a></li>
-            <li><a href="index.html#products">Compare</a></li>
+            <li><a href="shop.html">All products</a></li>
           </ul>
         </div>
         <div>
@@ -333,7 +280,9 @@
     </div>
   </footer>
 
-  <script src="assets/js/site.js"></script>
+  <script src="assets/js/catalog-data.js"></script>
   <script src="assets/js/cart.js"></script>
+  <script src="assets/js/shop.js"></script>
+  <script src="assets/js/site.js"></script>
 </body>
 </html>

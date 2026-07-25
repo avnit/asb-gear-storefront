@@ -32,29 +32,30 @@
 
   // --- interest capture -------------------------------------------------
   // No checkout is wired up yet, so "Notify me" composes a pre-filled mail
-  // to sales@ with the product context attached.
-  Array.prototype.forEach.call(document.querySelectorAll("[data-interest]"), function (el) {
-    el.addEventListener("click", function (e) {
-      e.preventDefault();
-      var product = el.getAttribute("data-interest");
-      var subject = "Pre-order interest: " + product;
-      var body = [
-        "Hi ASB Gear team,",
-        "",
-        "I'd like to be notified when the " + product + " is available to order.",
-        "",
-        "Quantity interested in: ",
-        "Name: ",
-        "Ship-to city / country: ",
-        "",
-        "Thanks!"
-      ].join("\n");
+  // to sales@ with the product context attached. Delegated on document so it
+  // also fires for concept cards that shop.js renders/re-renders dynamically.
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest("[data-interest]");
+    if (!el) return;
+    e.preventDefault();
+    var product = el.getAttribute("data-interest");
+    var subject = "Product interest: " + product;
+    var body = [
+      "Hi ASB Gear team,",
+      "",
+      "I'd like to be notified when the " + product + " is available to order.",
+      "",
+      "Quantity interested in: ",
+      "Name: ",
+      "Ship-to city / country: ",
+      "",
+      "Thanks!"
+    ].join("\n");
 
-      window.location.href =
-        "mailto:sales@asbsolutionsgroup.com" +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
-    });
+    window.location.href =
+      "mailto:sales@asbsolutionsgroup.com" +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
   });
 
   // --- footer year ------------------------------------------------------

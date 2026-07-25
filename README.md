@@ -3,9 +3,11 @@
 Pre-launch product-showcase site for **ASB Gear**, the hardware product line of
 **ASB Solutions Group Inc.**
 
-Two products are in the catalogue:
+The catalog shows **32 products**, but only **two are real launch SKUs** with
+sourcing and compliance work in motion. The other 30 are on-brand roadmap
+concepts — see "Catalog" below.
 
-| Product | SKU | Intro price | Page |
+| Real launch SKU | SKU | Intro price | Page |
 | :--- | :--- | :--- | :--- |
 | Nexus 9 — 9-in-1 USB-C docking station | `ASB-NX9-001` | $89 (reg. $109) | [`products/nexus-9-usb-c-dock.html`](products/nexus-9-usb-c-dock.html) |
 | DriveLink 15 — 15W magnetic car charger mount | `ASB-DL15-001` | $49 (reg. $59) | [`products/drivelink-15-car-mount.html`](products/drivelink-15-car-mount.html) |
@@ -17,7 +19,8 @@ step, no dependencies, no framework. It deploys to GitHub Pages, Cloudflare
 Pages, Netlify, S3, or an nginx container by copying the directory.
 
 ```
-index.html                       landing page — hero, both products, trust, FAQ
+index.html                       landing page — hero, featured products, trust, FAQ
+shop.html                        full catalog grid with category filter
 about.html                       company / product philosophy
 contact.html                     contact routes + general FAQ
 products/
@@ -31,11 +34,42 @@ privacy.html                     privacy policy               ⚠ needs legal re
 returns.html                     returns & 2-year warranty    ⚠ needs legal review
 shipping.html                    shipping rates & policy      ⚠ rates not contracted
 assets/css/site.css              full design system (light + dark)
+assets/js/catalog-data.js        SINGLE SOURCE OF TRUTH for all 32 products
+assets/js/shop.js                catalog grid renderer + category filter + line-art icons
 assets/js/site.js                mobile nav, active-link marking, mailto capture
-assets/js/cart.js                cart state, reservation flow, catalogue prices
-assets/img/                      logo, favicon, product SVG illustrations
+assets/js/cart.js                cart state, reservation flow; derives prices from catalog-data.js
+assets/img/                      logo, favicon, product SVG illustrations (launch SKUs only)
 .github/workflows/pages.yml      auto-deploy to GitHub Pages on push to main
 ```
+
+## Catalog: 2 real SKUs + 30 roadmap concepts
+
+The store shows **32 products**, but only **two are real** — the Nexus 9 dock
+and the DriveLink 15 mount, the SKUs with actual sourcing, compliance, GTIN, and
+trademark work in motion (tracked in the private `asb-gear-ops` repo). The other
+**30 are catalog/roadmap content**: realistic, on-brand product concepts with
+plausible planning prices, not yet sourced, certified, or orderable.
+
+All 32 live in **`assets/js/catalog-data.js`** — one array, one `status` field:
+
+- `status: "launch"` → orderable. Shows "Reserve now" + Add to cart. Only the two real SKUs. These are the only entries `cart.js` will accept into a cart.
+- `status: "coming-soon"` → not orderable. Shows "Coming soon" + a "Notify me" mailto. This is every concept.
+
+`shop.js` renders the grid and draws a category line-icon for concepts (the two
+launch SKUs use their real SVG illustrations). `cart.js` derives its orderable
+catalog and its launch prices from the same file, so **prices live in exactly
+one place now** — edit `catalog-data.js`, nowhere else.
+
+**To promote a concept to a real product:** flip its `status` to `"launch"`,
+give it verified specs, a real image, a `url` to a detail page, and complete the
+sourcing/compliance workup. Do not flip it on marketing enthusiasm alone.
+
+**The certification rule applies to every concept too.** No "Qi2", "Qi",
+"MagSafe", "USB-IF certified", "Find My", or "MFi" on any product — real or
+roadmap — unless it's actually been certified. The rule is restated at the top
+of `catalog-data.js` so nobody adds a concept that quietly violates it. Wireless
+chargers are "15W magnetic wireless charging"; USB-C power is described
+functionally, not as certified.
 
 ## Checkout — read this before adding a payment processor
 
