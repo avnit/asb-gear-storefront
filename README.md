@@ -179,3 +179,22 @@ The logo and favicon are the corporate ASB marks.
 ## License
 
 © ASB Solutions Group Inc. All rights reserved.
+
+<!-- ARCH-DIAGRAM:START -->
+
+## Architecture
+
+> Auto-generated architecture diagram. See [`docs/context-map.md`](docs/context-map.md) for the full context map (core application, containers/cloud, and database connections).
+
+```mermaid
+flowchart TD
+  User([User / Client])
+  App["asb-gear-storefront"]
+  SVC0["Cloudflare Workers"]
+  Deploy["GitHub Pages"]
+  User --> App
+  App --> SVC0
+  App -.deploy.-> Deploy
+```
+
+<!-- ARCH-DIAGRAM:END -->
